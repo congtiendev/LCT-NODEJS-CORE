@@ -1,6 +1,6 @@
+const { successResponse } = require('@utils/response');
 const authService = require('../services/auth.service');
 const tokenService = require('../services/token.service');
-const { successResponse } = require('@utils/response');
 
 class AuthController {
   async register(req, res, next) {

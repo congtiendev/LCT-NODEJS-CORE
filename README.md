@@ -36,12 +36,10 @@ npm install
 cp .env.example .env
 
 # Configure your .env file with database credentials
+# See docs/database/setup.md for detailed instructions
 
-# Generate Prisma Client
-npm run prisma:generate
-
-# Run migrations
-npm run prisma:migrate
+# Create database and schema
+npx prisma db push
 
 # Seed database
 npm run prisma:seed
@@ -104,6 +102,7 @@ src/
 ## API Endpoints
 
 ### Authentication
+
 - `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - Login
 - `POST /api/auth/refresh-token` - Refresh access token
@@ -111,6 +110,7 @@ src/
 - `GET /api/auth/me` - Get current user
 
 ### Users
+
 - `GET /api/users` - Get all users (Admin)
 - `GET /api/users/:id` - Get user by ID (Admin)
 - `POST /api/users` - Create user (Admin)
@@ -153,6 +153,14 @@ npm test -- --coverage
 - `npm run prisma:migrate` - Run migrations
 - `npm run prisma:studio` - Open Prisma Studio
 - `npm run prisma:seed` - Seed database
+
+## Documentation
+
+- **[Database Setup](docs/database/setup.md)** - Complete database setup guide
+- **[Database Schema](docs/database/schema.md)** - Schema documentation
+- **[API Documentation](docs/api/)** - REST API endpoints
+- **[Architecture](docs/architecture.md)** - System architecture
+- **[Deployment](docs/deployment.md)** - Production deployment
 
 ## License
 

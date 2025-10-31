@@ -3,12 +3,11 @@ const logger = require('@utils/logger');
 
 const prisma = new PrismaClient({
   log:
-    process.env.NODE_ENV === 'development'
-      ? ['query', 'info', 'warn', 'error']
-      : ['warn', 'error'],
+    process.env.NODE_ENV === 'development' ? ['query', 'info', 'warn', 'error'] : ['warn', 'error'],
 });
 
-prisma.$connect()
+prisma
+  .$connect()
   .then(() => {
     logger.info('Database connected successfully');
   })

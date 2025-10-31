@@ -1,5 +1,5 @@
-const userService = require('../services/user.service');
 const { successResponse } = require('@utils/response');
+const userService = require('../services/user.service');
 
 class UserController {
   async getAll(req, res, next) {

@@ -2,7 +2,7 @@ const logger = require('@utils/logger');
 const { errorResponse } = require('@utils/response');
 const AppException = require('@exceptions/app.exception');
 
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res, _next) => {
   logger.error(err.message, { error: err.stack, url: req.originalUrl, method: req.method });
 
   if (err instanceof AppException) {
@@ -33,9 +33,7 @@ const errorHandler = (err, req, res, next) => {
   return errorResponse(res, 'Internal server error', 500);
 };
 
-const notFoundHandler = (req, res) => {
-  return errorResponse(res, `Route ${req.originalUrl} not found`, 404);
-};
+const notFoundHandler = (req, res) => errorResponse(res, `Route ${req.originalUrl} not found`, 404);
 
 module.exports = {
   errorHandler,

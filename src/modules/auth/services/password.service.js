@@ -1,7 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
-const tokenService = require('./token.service');
 const AppException = require('@exceptions/app.exception');
 const { hashPassword, comparePassword } = require('@utils/crypto');
+const tokenService = require('./token.service');
 
 const prisma = new PrismaClient();
 

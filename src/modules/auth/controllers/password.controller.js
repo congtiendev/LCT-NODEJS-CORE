@@ -1,5 +1,5 @@
-const passwordService = require('../services/password.service');
 const { successResponse } = require('@utils/response');
+const passwordService = require('../services/password.service');
 
 class PasswordController {
   async forgotPassword(req, res, next) {

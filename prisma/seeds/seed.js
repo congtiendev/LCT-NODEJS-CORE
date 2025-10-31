@@ -3,11 +3,15 @@ const bcrypt = require('bcryptjs');
 
 const prisma = new PrismaClient();
 
+/**
+ * Seed database with initial data
+ */
 async function main() {
   console.log('Start seeding...');
 
-  // Create admin user
-  const hashedPassword = await bcrypt.hash('admin123', 10);
+  // Default password for all seed users
+  const defaultPassword = '123456';
+  const hashedPassword = await bcrypt.hash(defaultPassword, 10);
 
   const admin = await prisma.user.upsert({
     where: { email: 'admin@lct.com' },

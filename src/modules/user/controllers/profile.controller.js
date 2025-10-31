@@ -1,5 +1,5 @@
-const profileService = require('../services/profile.service');
 const { successResponse } = require('@utils/response');
+const profileService = require('../services/profile.service');
 
 class ProfileController {
   async getProfile(req, res, next) {

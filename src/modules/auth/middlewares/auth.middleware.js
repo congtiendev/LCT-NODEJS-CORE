@@ -52,8 +52,9 @@ const authenticate = async (req, res, next) => {
   }
 };
 
-const authorize = (...roles) => {
-  return (req, res, next) => {
+const authorize =
+  (...roles) =>
+  (req, res, next) => {
     if (!req.user) {
       return next(new AppException('Authentication required', 401));
     }
@@ -64,7 +65,6 @@ const authorize = (...roles) => {
 
     next();
   };
-};
 
 module.exports = {
   authenticate,

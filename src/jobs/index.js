@@ -1,6 +1,6 @@
+const logger = require('@utils/logger');
 const cleanupJob = require('./cron/cleanup.job');
 const reportJob = require('./cron/report.job');
-const logger = require('@utils/logger');
 
 const startJobs = () => {
   logger.info('Starting cron jobs...');

@@ -26,9 +26,7 @@ const fileExists = async (filePath) => {
   }
 };
 
-const getFileExtension = (filename) => {
-  return path.extname(filename).toLowerCase();
-};
+const getFileExtension = (filename) => path.extname(filename).toLowerCase();
 
 module.exports = {
   ensureDir,

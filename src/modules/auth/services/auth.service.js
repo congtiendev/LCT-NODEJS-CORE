@@ -1,8 +1,7 @@
-const bcrypt = require('bcryptjs');
 const { PrismaClient } = require('@prisma/client');
-const tokenService = require('./token.service');
 const AppException = require('@exceptions/app.exception');
 const { hashPassword, comparePassword } = require('@utils/crypto');
+const tokenService = require('./token.service');
 
 const prisma = new PrismaClient();
 
@@ -74,7 +73,7 @@ class AuthService {
     const tokens = await tokenService.generateAuthTokens(user);
 
     // Remove password from response
-    const { password: _, ...userWithoutPassword } = user;
+    const { password: _password, ...userWithoutPassword } = user;
 
     return {
       user: userWithoutPassword,

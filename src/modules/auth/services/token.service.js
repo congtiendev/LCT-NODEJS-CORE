@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
-const tokenRepository = require('../repositories/token.repository');
 const AppException = require('@exceptions/app.exception');
+const tokenRepository = require('../repositories/token.repository');
 
 class TokenService {
   generateToken(payload, secret, expiresIn) {

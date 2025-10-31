@@ -7,10 +7,10 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 
-const routes = require('./routes');
 const { errorHandler, notFoundHandler } = require('@middlewares/error.middleware');
 const morganMiddleware = require('@middlewares/logger.middleware');
 const { apiLimiter } = require('@middlewares/rate-limit.middleware');
+const routes = require('./routes');
 
 const app = express();
 

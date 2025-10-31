@@ -1,5 +1,5 @@
-const userRepository = require('../repositories/user.repository');
 const AppException = require('@exceptions/app.exception');
+const userRepository = require('../repositories/user.repository');
 
 class ProfileService {
   async getProfile(userId) {

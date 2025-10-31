@@ -1,7 +1,7 @@
-const userRepository = require('../repositories/user.repository');
 const AppException = require('@exceptions/app.exception');
 const { hashPassword } = require('@utils/crypto');
 const { paginate } = require('@helpers/pagination.helper');
+const userRepository = require('../repositories/user.repository');
 
 class UserService {
   async getAll(params) {
@@ -26,11 +26,11 @@ class UserService {
 
     const result = await userRepository.findMany({
       where,
-      page: parseInt(page),
-      limit: parseInt(limit),
+      page: parseInt(page, 10),
+      limit: parseInt(limit, 10),
     });
 
-    return paginate(result.data, result.total, parseInt(page), parseInt(limit));
+    return paginate(result.data, result.total, parseInt(page, 10), parseInt(limit, 10));
   }
 
   async getById(id) {
@@ -61,7 +61,9 @@ class UserService {
       role: role || 'USER',
     });
 
-    const { password: _, ...userWithoutPassword } = user;
+    // Remove password from response
+    // eslint-disable-next-line no-unused-vars
+    const { password: userPassword, ...userWithoutPassword } = user;
     return userWithoutPassword;
   }
 
@@ -81,7 +83,9 @@ class UserService {
 
     const updatedUser = await userRepository.update(id, data);
 
-    const { password: _, ...userWithoutPassword } = updatedUser;
+    // Remove password from response
+    // eslint-disable-next-line no-unused-vars
+    const { password: updatedPassword, ...userWithoutPassword } = updatedUser;
     return userWithoutPassword;
   }
 

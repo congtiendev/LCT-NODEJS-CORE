@@ -14,9 +14,8 @@ const pick = (obj, keys) => {
   return result;
 };
 
-const removeNullUndefined = (obj) => {
-  return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null));
-};
+const removeNullUndefined = (obj) =>
+  Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null));
 
 module.exports = {
   omit,
