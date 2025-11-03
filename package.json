@@ -20,8 +20,7 @@
     "prisma:reset": "node scripts/reset-db.js",
     "docker:dev": "docker-compose up -d",
     "docker:prod": "docker-compose -f docker-compose.prod.yml up -d",
-    "docker:down": "docker-compose down",
-    "postinstall": "prisma generate"
+    "docker:down": "docker-compose down"
   },
   "keywords": [
     "nodejs",
