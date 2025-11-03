@@ -1,12 +1,13 @@
 const { successResponse } = require('@utils/response');
 const userService = require('../services/user.service');
+const HTTP_STATUS = require('@constants/http-status');
 
 class UserController {
   async getAll(req, res, next) {
     try {
       const { page, limit, search, role, status } = req.query;
       const result = await userService.getAll({ page, limit, search, role, status });
-      return successResponse(res, result, 'Users retrieved successfully');
+      return successResponse(res, result, 'Users retrieved successfully', HTTP_STATUS.OK);
     } catch (error) {
       next(error);
     }
@@ -16,7 +17,7 @@ class UserController {
     try {
       const { id } = req.params;
       const user = await userService.getById(id);
-      return successResponse(res, user, 'User retrieved successfully');
+      return successResponse(res, user, 'User retrieved successfully', HTTP_STATUS.OK);
     } catch (error) {
       next(error);
     }
@@ -25,7 +26,7 @@ class UserController {
   async create(req, res, next) {
     try {
       const user = await userService.create(req.body);
-      return successResponse(res, user, 'User created successfully', 201);
+      return successResponse(res, user, 'User created successfully', HTTP_STATUS.CREATED);
     } catch (error) {
       next(error);
     }
@@ -35,7 +36,7 @@ class UserController {
     try {
       const { id } = req.params;
       const user = await userService.update(id, req.body);
-      return successResponse(res, user, 'User updated successfully');
+      return successResponse(res, user, 'User updated successfully', HTTP_STATUS.OK);
     } catch (error) {
       next(error);
     }
@@ -45,7 +46,7 @@ class UserController {
     try {
       const { id } = req.params;
       await userService.delete(id);
-      return successResponse(res, null, 'User deleted successfully');
+      return successResponse(res, null, 'User deleted successfully', HTTP_STATUS.OK);
     } catch (error) {
       next(error);
     }
