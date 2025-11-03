@@ -1,7 +1,20 @@
 const Bull = require('bull');
 const logger = require('@utils/logger');
 
+// Check if Redis should be disabled
+const DISABLE_REDIS = process.env.DISABLE_REDIS === 'true';
+
 const createQueue = (name, options = {}) => {
+  if (DISABLE_REDIS) {
+    logger.warn(`Queue ${name} disabled: Redis not available`);
+    return {
+      process: () => logger.info(`Mock queue ${name}: process() called`),
+      add: () => logger.info(`Mock queue ${name}: add() called`),
+      on: () => {},
+      close: () => Promise.resolve(),
+    };
+  }
+
   const queue = new Bull(name, {
     redis: {
       host: process.env.REDIS_HOST || 'localhost',

@@ -37,6 +37,25 @@ app.use('/api/', apiLimiter);
 
 // Static files
 app.use('/uploads', express.static('uploads'));
+app.use('/public', express.static('public'));
+
+// Root health check
+app.get('/', (_req, res) => {
+  res.json({
+    success: true,
+    message: 'LCT Node.js Core API is running',
+    version: '1.0.0',
+    timestamp: new Date().toISOString(),
+  });
+});
+
+// API Documentation
+app.get('/docs', (_req, res) => {
+  res.sendFile('api-docs.html', { root: 'public' });
+});
+app.get('/api-docs', (_req, res) => {
+  res.sendFile('api-docs.html', { root: 'public' });
+});
 
 // Routes
 app.use('/api', routes);

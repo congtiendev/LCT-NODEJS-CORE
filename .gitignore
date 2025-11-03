@@ -44,7 +44,8 @@ uploads/*
 !uploads/.gitkeep
 
 # Prisma
-prisma/migrations/**/migration.sql
+# Keep migrations for production deployment
+# prisma/migrations/**/migration.sql
 
 # Temporary files
 tmp/
