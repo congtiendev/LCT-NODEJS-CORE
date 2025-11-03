@@ -23,8 +23,11 @@ COPY . .
 # Create uploads directory
 RUN mkdir -p uploads logs
 
+# Make startup script executable
+RUN chmod +x start.sh
+
 # Expose port
 EXPOSE 3000
 
-# Start application
-CMD ["node", "server.js"]
+# Start application with migrations
+CMD ["./start.sh"]
